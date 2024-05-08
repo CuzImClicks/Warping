@@ -1,0 +1,11 @@
+{
+    "compatibilityLevel": "JAVA_8",
+    "minVersion": "0.7",
+    "package": "me.clicks.warping.mixins",
+    "refmap": "mixins.warping.refmap.json",
+    "mixins": [
+
+    ],
+    "client": [
+    ]
+}

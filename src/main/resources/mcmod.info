@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "warping",
+    "name": "Warping",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/isXander/ForgeKotlinTemplate",
+    "updateUrl": "",
+    "authorList": ["Clicks"],
+    "credits": "isXander for the project template. <3",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
