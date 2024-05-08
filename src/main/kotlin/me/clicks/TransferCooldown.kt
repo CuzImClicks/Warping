@@ -1,6 +1,5 @@
-package me.clicks.clicksmod.features.impl
+package me.clicks
 
-import me.clicks.Config
 import me.clicks.Warping.mc
 import net.minecraft.util.ChatComponentText
 import net.minecraft.util.EnumChatFormatting
@@ -13,7 +12,7 @@ import java.util.concurrent.Executors
  */
 object TransferCooldown {
 
-    private val executor = Executors.newSingleThreadExecutor()
+    private val executor = Executors.newSingleThreadExecutor() // needed because in some instances the "WorldEvent.Load" gets called multiple times per world load
 
     @Volatile var isTaskScheduled = false
         private set

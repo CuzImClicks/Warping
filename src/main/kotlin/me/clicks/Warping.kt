@@ -1,11 +1,14 @@
 package me.clicks
 
-import me.clicks.clicksmod.features.impl.TransferCooldown
 import net.minecraft.client.Minecraft
+import net.minecraft.client.gui.GuiScreen
 import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
+import net.minecraftforge.fml.common.eventhandler.EventPriority
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import net.minecraftforge.fml.common.gameevent.TickEvent
 
 /**
  * @author Clicks
@@ -24,9 +27,18 @@ object Warping {
         Minecraft.getMinecraft()
     }
 
+
+    var gui: GuiScreen? = null // taken from skytils
+
     @Mod.EventHandler
     fun init(event: FMLInitializationEvent) {
-        MinecraftForge.EVENT_BUS.register(TransferCooldown)
+
+        arrayOf(
+            TransferCooldown,
+            this
+        ).forEach {
+            MinecraftForge.EVENT_BUS.register(it)
+        }
 
         arrayOf(
             HubWrapper,
@@ -35,6 +47,14 @@ object Warping {
             WarpingCommand
         ).forEach {
             ClientCommandHandler.instance.registerCommand(it)
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    fun onTick(event: TickEvent.ClientTickEvent) {
+        if (gui != null) {
+            mc.displayGuiScreen(gui)
+            gui = null
         }
     }
 

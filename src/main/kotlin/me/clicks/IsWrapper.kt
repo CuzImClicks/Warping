@@ -1,6 +1,5 @@
 package me.clicks
 
-import me.clicks.clicksmod.features.impl.TransferCooldown
 import net.minecraft.command.CommandBase
 import net.minecraft.command.ICommandSender
 

@@ -1,6 +1,5 @@
 package me.clicks
 
-import me.clicks.Warping.mc
 import net.minecraft.command.CommandBase
 import net.minecraft.command.ICommandSender
 
@@ -21,6 +20,6 @@ object WarpingCommand : CommandBase() {
     }
 
     override fun processCommand(sender: ICommandSender?, args: Array<out String>?) {
-        mc.displayGuiScreen(Config.gui())
+        Warping.gui = Config.gui()
     }
 }
