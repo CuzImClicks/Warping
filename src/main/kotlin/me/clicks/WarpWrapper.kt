@@ -21,12 +21,12 @@ object WarpWrapper : CommandBase() {
     }
 
     override fun processCommand(sender: ICommandSender?, args: Array<out String>?) {
-        if (TransferCooldown.isTaskScheduled  && args?.size == 1) {
+        if (TransferCooldown.isTaskScheduled) {
             TransferCooldown.registerListener {
-                mc.thePlayer.sendChatMessage("/warp ${args[0]}")
+                mc.thePlayer.sendChatMessage("/warp ${args.joinToString(" ")}")
             }
             return
         }
-        mc.thePlayer.sendChatMessage("/warp ${args?.get(0) ?: ""}")
+        mc.thePlayer.sendChatMessage("/warp ${args.joinToString(" ")}")
     }
 }
